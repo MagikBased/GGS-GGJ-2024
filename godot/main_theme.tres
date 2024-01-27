@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://pqx6ev30fd8o"]
+
+[ext_resource type="FontFile" uid="uid://cbxes6cchc6f1" path="res://fonts/MorrisRomanBlack.ttf" id="1_dldvu"]
+
+[resource]
+default_font = ExtResource("1_dldvu")
+default_font_size = 30
