@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b5f7m6w1n5wso"]
+[gd_scene load_steps=23 format=3 uid="uid://b5f7m6w1n5wso"]
 
 [ext_resource type="Script" path="res://scripts/UI/hand.gd" id="1_0psti"]
 [ext_resource type="Script" path="res://scenes/battle.gd" id="1_hjqel"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://scenes/Jokers_container.gd" id="10_olvra"]
 [ext_resource type="Script" path="res://scenes/played_cards.gd" id="11_xxfgi"]
 [ext_resource type="Texture2D" uid="uid://bh4gqtlr38cep" path="res://sprites/shield.png" id="15_7tcp5"]
+[ext_resource type="Script" path="res://scenes/on_loss.gd" id="19_fb0bp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yxhmn"]
 size = Vector2(1080, 480)
@@ -278,6 +279,31 @@ mouse_filter = 2
 texture = ExtResource("4_e4pqp")
 stretch_mode = 1
 
+[node name="OnLoss" type="Label" parent="."]
+visible = false
+offset_top = 2.0
+offset_right = 1078.0
+offset_bottom = 723.0
+mouse_filter = 0
+theme = ExtResource("7_vwwsj")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 132
+text = "You've Died!"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("19_fb0bp")
+
+[node name="Button" type="Button" parent="OnLoss"]
+layout_mode = 0
+offset_left = 450.0
+offset_top = 450.0
+offset_right = 630.0
+offset_bottom = 490.0
+theme = ExtResource("7_vwwsj")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Play Again"
+
 [connection signal="pressed" from="CardUI/SelectDiscardCards/_DiscardButton" to="CardUI/SelectDiscardCards" method="_on_discard_button_pressed"]
 [connection signal="pressed" from="DiscardButton" to="PlayerHandler" method="_on_discard_button_pressed"]
 [connection signal="pressed" from="AttackButton" to="AttackButton" method="_on_pressed"]
+[connection signal="pressed" from="OnLoss/Button" to="OnLoss" method="_on_button_pressed"]

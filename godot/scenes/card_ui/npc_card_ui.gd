@@ -41,7 +41,6 @@ func _ready() -> void:
 	
 
 func new_card_stats(new_face_value) -> void:
-	print(new_face_value == Value.JACK)
 	if new_face_value == Value.JACK:
 		attack_value = 10
 		health = 20

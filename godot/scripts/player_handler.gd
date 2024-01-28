@@ -15,7 +15,7 @@ const MAX_HAND_SIZE: int = 8
 @onready var face_up_enemy = $"../CardUI/Enemy/FaceUpEnemy"
 @onready var jokers = $"../CardUI/Jokers"
 @onready var shield_label = $"../CardUI/ShieldIcon/Label"
-
+@onready var on_loss = $"../OnLoss"
 
 var player: PlayerResources
 var shields: int = 0
@@ -25,7 +25,7 @@ var current_hand_size:int = 0
 
 func _ready():
 	attack_button.connect("values_calculated", Callable(self, "_on_attack_button_pressed"))
-	
+
 func set_player_stats(value: PlayerResources) -> void:
 	stats = value.create_instance()
 
@@ -55,6 +55,7 @@ func draw_cards(amount: int, doTween: bool = true) -> void:
 			draw_card()
 
 func _on_attack_button_pressed(total, has_hearts, has_diamonds, has_spades, has_clubs, cards_played):
+	#print(player.discard)
 	var perfect_kill: bool = false
 	current_hand_size -= cards_played
 	if has_diamonds:
@@ -63,7 +64,7 @@ func _on_attack_button_pressed(total, has_hearts, has_diamonds, has_spades, has_
 	if has_hearts:
 		draw_cards(total, false)
 	if has_spades:
-		pass
+		return_graveyard(total)
 	if has_clubs:
 		total *= 2
 	var enemy_card
@@ -73,6 +74,7 @@ func _on_attack_button_pressed(total, has_hearts, has_diamonds, has_spades, has_
 			break
 	if enemy_card.health == total:
 		perfect_kill = true
+		jokers.flip_a_joker()
 	enemy_card.health -= total
 	enemy_card.update_stats()
 	var hand_value_total: int = 0
@@ -84,10 +86,9 @@ func _on_attack_button_pressed(total, has_hearts, has_diamonds, has_spades, has_
 		card.played = true
 	#print(hand_value_total)
 	if hand_value_total < enemy_card.attack_value:
-		print("dead")
+		on_loss.visible = true
 	if enemy_card.health > 0:
 		enemy_attacks(enemy_card.attack_value)
-		
 	else:
 		var new_card = Card.new()
 		new_card.suit = enemy_card.card.suit
@@ -96,17 +97,29 @@ func _on_attack_button_pressed(total, has_hearts, has_diamonds, has_spades, has_
 		for card in played_cards.get_children():
 			player.discard.add_card(card.card)
 			card.queue_free()
+		shields = 0
+		shield_label.text = str(shields)
 		if perfect_kill:
 			player.draw_pile.add_card(enemy_deck.deck.cards[0], true)
 		else:
 			player.draw_pile.add_card(enemy_deck.deck.cards[0])
 		enemy_deck.deck.cards.remove_at(0)
+		if enemy_deck.deck.cards.size() == 0:
+			on_loss.text = "You've Won!"
+			on_loss.visible = true
 		face_up_enemy._set_card(enemy_deck.deck.cards[0])
 		face_up_enemy.update_stats()
 		face_up_enemy.new_card_stats(enemy_deck.deck.cards[0].value)
 		
 	
 
+func return_graveyard(amount: int):
+	var cards_left = amount
+	
+	#while cards_left > 1 or player.discard.size() > 0:
+		#player.discard
+		#cards_left -= 1
+	#pass
 
 func enemy_attacks(attack_value: int) -> void:
 	enemy_attack_damage = (attack_value - shields)
@@ -132,7 +145,6 @@ func _on_discard_button_pressed():
 		for value in discarded_values.keys():
 			var count = discarded_values[value]
 			if count >= 2:
-				print("a pair")
 				jokers.flip_a_joker()
 		current_hand_size -= play_area_size
 		discard_button.visible = false
