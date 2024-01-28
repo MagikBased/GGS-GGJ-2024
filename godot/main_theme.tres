@@ -1,7 +1,18 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://pqx6ev30fd8o"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://pqx6ev30fd8o"]
 
 [ext_resource type="FontFile" uid="uid://cbxes6cchc6f1" path="res://fonts/MorrisRomanBlack.ttf" id="1_dldvu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_m1s30"]
+bg_color = Color(0.839277, 0.854902, 0.823636, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+shadow_size = 3
 
 [resource]
 default_font = ExtResource("1_dldvu")
 default_font_size = 30
+Button/styles/hover = SubResource("StyleBoxFlat_m1s30")
+Button/styles/normal = SubResource("StyleBoxFlat_m1s30")
+Button/styles/pressed = SubResource("StyleBoxFlat_m1s30")

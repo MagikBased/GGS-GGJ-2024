@@ -8,7 +8,7 @@ var discard: CardPile
 var draw_pile: CardPile
 
 func create_instance() -> Resource:
-	var instance = PlayerResources
+	var instance: PlayerResources = self.duplicate()
 	instance.deck = instance.starting_deck.duplicate()
 	instance.draw_pile = CardPile.new()
 	instance.discard = CardPile.new()

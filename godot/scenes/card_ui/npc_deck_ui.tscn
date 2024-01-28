@@ -1,0 +1,42 @@
+[gd_scene load_steps=4 format=3 uid="uid://cq8htcnlkbqk1"]
+
+[ext_resource type="Script" path="res://scenes/card_ui/npc_deck_ui.gd" id="1_m5x2k"]
+[ext_resource type="Resource" uid="uid://ba377n8x6sxkh" path="res://custom_resources/enemy_deck.tres" id="2_e5uw2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7l8iu"]
+bg_color = Color(0, 0.266667, 0.968627, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="Deck" type="Control"]
+custom_minimum_size = Vector2(112, 175)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -968.0
+offset_bottom = -545.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m5x2k")
+deck = ExtResource("2_e5uw2")
+
+[node name="CardBack" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7l8iu")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

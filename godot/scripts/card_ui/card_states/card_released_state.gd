@@ -9,7 +9,4 @@ func enter() -> void:
 		played = true
 
 func on_input(_event: InputEvent) -> void:
-	if played:
-		return
-		
 	transition_requested.emit(self,CardState.State.BASE)

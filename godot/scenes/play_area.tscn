@@ -1,10 +1,22 @@
-[gd_scene load_steps=19 format=3 uid="uid://b5f7m6w1n5wso"]
+[gd_scene load_steps=21 format=3 uid="uid://b5f7m6w1n5wso"]
 
 [ext_resource type="Script" path="res://scripts/UI/hand.gd" id="1_0psti"]
 [ext_resource type="PackedScene" uid="uid://b4k2rthi0k3mn" path="res://scenes/card_ui/card_ui.tscn" id="1_f5r5g"]
+[ext_resource type="Script" path="res://scenes/battle.gd" id="1_hjqel"]
+[ext_resource type="Script" path="res://scripts/UI/battle_area.gd" id="1_yqvpm"]
+[ext_resource type="Script" path="res://scripts/player_handler.gd" id="2_sfg6c"]
 [ext_resource type="Script" path="res://custom_resources/card.gd" id="3_yl5tr"]
 [ext_resource type="Texture2D" uid="uid://dc0rpg45pvu4m" path="res://sprites/background2.png" id="4_e4pqp"]
+[ext_resource type="Resource" uid="uid://dtfa67bqiowng" path="res://custom_resources/player_stats.tres" id="4_f20gj"]
 [ext_resource type="Script" path="res://scripts/UI/ParallaxBackground.gd" id="4_whfhn"]
+[ext_resource type="Texture2D" uid="uid://byhqfj315yyq8" path="res://sprites/button.png" id="6_l4ass"]
+[ext_resource type="Script" path="res://scripts/play_area.gd" id="6_nf6m5"]
+[ext_resource type="PackedScene" uid="uid://q3maqplirx3a" path="res://scenes/card_ui/npc_card_ui.tscn" id="7_0uinu"]
+[ext_resource type="Theme" uid="uid://pqx6ev30fd8o" path="res://main_theme.tres" id="7_vwwsj"]
+[ext_resource type="PackedScene" uid="uid://cq8htcnlkbqk1" path="res://scenes/card_ui/npc_deck_ui.tscn" id="7_wefr3"]
+[ext_resource type="PackedScene" uid="uid://5b10y40f18d0" path="res://scenes/card_ui/joker_card_ui.tscn" id="10_0im3a"]
+[ext_resource type="Script" path="res://scripts/attack_button.gd" id="10_2bs80"]
+[ext_resource type="Script" path="res://scenes/played_cards.gd" id="11_xxfgi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yxhmn"]
 size = Vector2(1080, 480)
@@ -12,73 +24,15 @@ size = Vector2(1080, 480)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uq78a"]
 size = Vector2(1080, 240)
 
-[sub_resource type="Resource" id="Resource_4a42k"]
-script = ExtResource("3_yl5tr")
-id = ""
-suit = 0
-value = 0
-
-[sub_resource type="Resource" id="Resource_s3rhw"]
+[sub_resource type="Resource" id="Resource_f7o1a"]
 script = ExtResource("3_yl5tr")
 id = ""
 suit = 1
-value = 1
-
-[sub_resource type="Resource" id="Resource_vnuyp"]
-script = ExtResource("3_yl5tr")
-id = ""
-suit = 2
-value = 5
-
-[sub_resource type="Resource" id="Resource_8k66c"]
-script = ExtResource("3_yl5tr")
-id = ""
-suit = 1
-value = 11
-
-[sub_resource type="Resource" id="Resource_lnpfa"]
-script = ExtResource("3_yl5tr")
-id = ""
-suit = 2
-value = 4
-
-[sub_resource type="Resource" id="Resource_sqesg"]
-script = ExtResource("3_yl5tr")
-id = ""
-suit = 0
-value = 4
-
-[sub_resource type="Resource" id="Resource_bnboi"]
-script = ExtResource("3_yl5tr")
-id = ""
-suit = 1
-value = 9
-
-[sub_resource type="Resource" id="Resource_vmnui"]
-script = ExtResource("3_yl5tr")
-id = ""
-suit = 1
-value = 1
-
-[sub_resource type="Resource" id="Resource_k3rjb"]
-script = ExtResource("3_yl5tr")
-id = ""
-suit = 0
-value = 0
-
-[sub_resource type="Resource" id="Resource_h0vlu"]
-script = ExtResource("3_yl5tr")
-id = ""
-suit = 3
 value = 10
 
-[sub_resource type="Resource" id="Resource_s3hpc"]
-script = ExtResource("3_yl5tr")
-id = ""
-suit = 1
-value = 0
-
 [node name="play_area" type="Node2D"]
+script = ExtResource("1_hjqel")
+player_stats = ExtResource("4_f20gj")
 
 [node name="DropPointDetector" type="Area2D" parent="."]
 collision_layer = 2
@@ -87,6 +41,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DropPointDetector"]
 position = Vector2(540, 240)
 shape = SubResource("RectangleShape2D_yxhmn")
+debug_color = Color(0, 0.6, 0.701961, 0.419608)
 
 [node name="HandDropDetector" type="Area2D" parent="."]
 collision_layer = 4
@@ -96,9 +51,16 @@ collision_mask = 4
 position = Vector2(540, 600)
 shape = SubResource("RectangleShape2D_uq78a")
 
-[node name="CardUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
+[node name="PlayerHandler" type="Node" parent="." node_paths=PackedStringArray("hand")]
+script = ExtResource("2_sfg6c")
+stats = ExtResource("4_f20gj")
+hand = NodePath("../CardUI/Hand")
 
-[node name="Hand" type="HBoxContainer" parent="CardUI"]
+[node name="CardUI" type="CanvasLayer" parent="." groups=["ui_layer"]]
+script = ExtResource("1_yqvpm")
+player_stats = ExtResource("4_f20gj")
+
+[node name="Hand" type="HBoxContainer" parent="CardUI" groups=["hand"]]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -113,38 +75,6 @@ grow_vertical = 0
 alignment = 1
 script = ExtResource("1_0psti")
 
-[node name="CardUI" parent="CardUI/Hand" instance=ExtResource("1_f5r5g")]
-layout_mode = 2
-card = SubResource("Resource_4a42k")
-
-[node name="CardUI2" parent="CardUI/Hand" instance=ExtResource("1_f5r5g")]
-layout_mode = 2
-card = SubResource("Resource_s3rhw")
-
-[node name="CardUI3" parent="CardUI/Hand" instance=ExtResource("1_f5r5g")]
-layout_mode = 2
-card = SubResource("Resource_vnuyp")
-
-[node name="CardUI4" parent="CardUI/Hand" instance=ExtResource("1_f5r5g")]
-layout_mode = 2
-card = SubResource("Resource_8k66c")
-
-[node name="CardUI5" parent="CardUI/Hand" instance=ExtResource("1_f5r5g")]
-layout_mode = 2
-card = SubResource("Resource_lnpfa")
-
-[node name="CardUI6" parent="CardUI/Hand" instance=ExtResource("1_f5r5g")]
-layout_mode = 2
-card = SubResource("Resource_sqesg")
-
-[node name="CardUI7" parent="CardUI/Hand" instance=ExtResource("1_f5r5g")]
-layout_mode = 2
-card = SubResource("Resource_bnboi")
-
-[node name="CardUI8" parent="CardUI/Hand" instance=ExtResource("1_f5r5g")]
-layout_mode = 2
-card = SubResource("Resource_vmnui")
-
 [node name="PlayArea" type="HBoxContainer" parent="CardUI" groups=["play_area"]]
 anchors_preset = 8
 anchor_left = 0.5
@@ -152,25 +82,110 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -462.0
-offset_top = -55.0
+offset_top = -75.0
 offset_right = 462.0
-offset_bottom = 120.0
+offset_bottom = 100.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
-script = ExtResource("1_0psti")
+script = ExtResource("6_nf6m5")
 
-[node name="CardUI" parent="CardUI/PlayArea" instance=ExtResource("1_f5r5g")]
-layout_mode = 2
-card = SubResource("Resource_k3rjb")
+[node name="Enemy" type="HBoxContainer" parent="CardUI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -56.0
+offset_top = 10.0
+offset_right = 56.0
+offset_bottom = 185.0
+grow_horizontal = 2
 
-[node name="CardUI2" parent="CardUI/PlayArea" instance=ExtResource("1_f5r5g")]
+[node name="EnemyDeck" parent="CardUI/Enemy" instance=ExtResource("7_wefr3")]
 layout_mode = 2
-card = SubResource("Resource_h0vlu")
 
-[node name="CardUI3" parent="CardUI/PlayArea" instance=ExtResource("1_f5r5g")]
+[node name="FaceUpEnemy" parent="CardUI/Enemy" instance=ExtResource("7_0uinu")]
 layout_mode = 2
-card = SubResource("Resource_s3hpc")
+card = SubResource("Resource_f7o1a")
+face_up = true
+in_play = true
+
+[node name="Jokers" type="HBoxContainer" parent="CardUI"]
+offset_left = 10.0
+offset_top = 10.0
+offset_right = 238.0
+offset_bottom = 185.0
+alignment = 1
+
+[node name="CardUI" parent="CardUI/Jokers" instance=ExtResource("10_0im3a")]
+layout_mode = 2
+suit = 1
+
+[node name="CardUI2" parent="CardUI/Jokers" instance=ExtResource("10_0im3a")]
+layout_mode = 2
+face_up = true
+
+[node name="PlayedCards" type="Container" parent="CardUI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -354.0
+offset_top = 10.0
+offset_right = -10.0
+offset_bottom = 543.0
+grow_horizontal = 0
+script = ExtResource("11_xxfgi")
+
+[node name="CardUI" parent="CardUI/PlayedCards" instance=ExtResource("1_f5r5g")]
+layout_mode = 2
+script = null
+
+[node name="CardUI2" parent="CardUI/PlayedCards" instance=ExtResource("1_f5r5g")]
+layout_mode = 2
+script = null
+
+[node name="CardUI3" parent="CardUI/PlayedCards" instance=ExtResource("1_f5r5g")]
+layout_mode = 2
+script = null
+
+[node name="CardUI4" parent="CardUI/PlayedCards" instance=ExtResource("1_f5r5g")]
+layout_mode = 2
+script = null
+
+[node name="AttackButton" type="TextureButton" parent="."]
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 830.0
+offset_top = 450.0
+offset_right = 1006.0
+offset_bottom = 525.0
+grow_horizontal = 0
+grow_vertical = 2
+mouse_filter = 1
+texture_normal = ExtResource("6_l4ass")
+script = ExtResource("10_2bs80")
+
+[node name="Label" type="Label" parent="AttackButton"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = -19.5
+offset_right = 56.0
+offset_bottom = 19.5
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("7_vwwsj")
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_font_sizes/font_size = 45
+text = "Attack"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 script = ExtResource("4_whfhn")
@@ -181,5 +196,8 @@ motion_mirroring = Vector2(61, 61)
 [node name="Background" type="TextureRect" parent="ParallaxBackground/ParallaxLayer"]
 offset_right = 1080.0
 offset_bottom = 720.0
+mouse_filter = 2
 texture = ExtResource("4_e4pqp")
 stretch_mode = 1
+
+[connection signal="pressed" from="AttackButton" to="AttackButton" method="_on_pressed"]

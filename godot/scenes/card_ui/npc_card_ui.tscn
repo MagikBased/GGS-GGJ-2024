@@ -1,0 +1,149 @@
+[gd_scene load_steps=5 format=3 uid="uid://q3maqplirx3a"]
+
+[ext_resource type="Script" path="res://scenes/card_ui/npc_card_ui.gd" id="1_qscb5"]
+[ext_resource type="Theme" uid="uid://pqx6ev30fd8o" path="res://main_theme.tres" id="2_r3u47"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rsrlg"]
+bg_color = Color(0.839216, 0.854902, 0.823529, 1)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+shadow_color = Color(0, 0, 0, 0.643137)
+shadow_size = 3
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7l8iu"]
+bg_color = Color(0, 0.266667, 0.968627, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+
+[node name="CardUI" type="Control"]
+custom_minimum_size = Vector2(112, 175)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -968.0
+offset_bottom = -545.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_qscb5")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_rsrlg")
+
+[node name="FaceValue" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.116
+anchor_top = 0.091
+anchor_right = 0.116
+anchor_bottom = 0.091
+offset_left = -9.992
+offset_top = -12.925
+offset_right = 10.008
+offset_bottom = 13.075
+theme = ExtResource("2_r3u47")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "J"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Suit" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.134
+anchor_top = 0.2
+anchor_right = 0.134
+anchor_bottom = 0.2
+offset_left = -15.008
+offset_top = -15.0
+offset_right = 14.992
+offset_bottom = 15.0
+theme = ExtResource("2_r3u47")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "♦"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="FaceValue2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.902
+anchor_top = 0.931
+anchor_right = 0.902
+anchor_bottom = 0.931
+offset_left = 7.97599
+offset_top = 9.075
+offset_right = 27.976
+offset_bottom = 35.075
+rotation = 3.14159
+theme = ExtResource("2_r3u47")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "J"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Suit2" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.866
+anchor_top = 0.8
+anchor_right = 0.866
+anchor_bottom = 0.8
+offset_left = 15.008
+offset_top = 15.0
+offset_right = 45.008
+offset_bottom = 45.0
+rotation = 3.14159
+theme = ExtResource("2_r3u47")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 25
+text = "♦"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Art" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -60.0
+offset_right = 36.0
+offset_bottom = 60.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="CardBack" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7l8iu")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

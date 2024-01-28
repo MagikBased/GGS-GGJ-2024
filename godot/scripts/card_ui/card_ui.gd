@@ -1,10 +1,9 @@
 class_name CardUI
 extends Control
 
-signal reparent_requested(which_card_ui: CardUI)
+signal reparent_requested(which_card_ui: CardUI, which_parent)
 
 @export var card: Card : set = _set_card
-
 @onready var drop_point_detector = $DropPointDetector
 @onready var card_state_machine: CardStateMachine = $CardStateMachine as CardStateMachine
 @onready var face_value = $FaceValue
@@ -15,6 +14,7 @@ signal reparent_requested(which_card_ui: CardUI)
 
 func _ready() -> void:
 	card_state_machine.init(self)
+	
 
 func _input(event: InputEvent) -> void:
 	card_state_machine.on_input(event)
@@ -46,7 +46,7 @@ func _set_card(input_card: Card) -> void:
 	face_value_2.text = value_text
 	suit.text = suit_text
 	suit_2.text = suit_text
-	if card.suit == card.Suit.DIAMONDS or card.Suit.HEARTS:
+	if card.suit == card.Suit.DIAMONDS or card.suit == card.Suit.HEARTS:
 		suit.add_theme_color_override("font_color", Color.RED)
 		suit_2.add_theme_color_override("font_color", Color.RED)
 		face_value.add_theme_color_override("font_color", Color.RED)
@@ -56,7 +56,6 @@ func _set_card(input_card: Card) -> void:
 		suit_2.add_theme_color_override("font_color", Color.BLACK)
 		face_value.add_theme_color_override("font_color", Color.BLACK)
 		face_value_2.add_theme_color_override("font_color", Color.BLACK)
-	
 
 func return_face_value(input_card: Card) -> String:
 	var card_value = input_card.value
