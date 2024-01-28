@@ -1,4 +1,4 @@
-class_name Hand
+class_name PlayArea
 extends HBoxContainer
 
 func _ready() -> void:

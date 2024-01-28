@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="MyGame"
-run/main_scene="res://scenes/boot/godot/godot_bootsplash_scene.tscn"
+run/main_scene="res://scenes/play_area.tscn"
 config/features=PackedStringArray("4.2")
 config/icon="res://icon.svg"
 
@@ -23,9 +23,8 @@ UserSettings="*res://settings/user_settings.gd"
 
 window/size/viewport_width=1080
 window/size/viewport_height=720
-window/size/mode=3
-window/size/window_width_override=1920
-window/size/window_height_override=1080
+window/size/window_width_override=1080
+window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_height"
 
@@ -105,6 +104,7 @@ locale/translations=PackedStringArray("res://i18n/translation.de.translation", "
 [layer_names]
 
 2d_physics/layer_2="card_drop_area"
+2d_physics/layer_3="hand_drop_area"
 
 [rendering]
 

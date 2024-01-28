@@ -1,7 +1,248 @@
-[gd_resource type="Resource" script_class="CardPile" load_steps=2 format=3 uid="uid://da2brrjeooyhb"]
+[gd_resource type="Resource" script_class="CardPile" load_steps=43 format=3 uid="uid://da2brrjeooyhb"]
 
+[ext_resource type="Script" path="res://custom_resources/card.gd" id="1_0iip6"]
 [ext_resource type="Script" path="res://custom_resources/card_pile.gd" id="1_gmq6c"]
+
+[sub_resource type="Resource" id="Resource_nga0j"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 0
+value = 0
+
+[sub_resource type="Resource" id="Resource_7gxrs"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 0
+value = 1
+
+[sub_resource type="Resource" id="Resource_00ckf"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 0
+value = 2
+
+[sub_resource type="Resource" id="Resource_mutuv"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 0
+value = 3
+
+[sub_resource type="Resource" id="Resource_0j0ho"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 0
+value = 4
+
+[sub_resource type="Resource" id="Resource_5prcl"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 0
+value = 5
+
+[sub_resource type="Resource" id="Resource_ivnxx"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 0
+value = 6
+
+[sub_resource type="Resource" id="Resource_416re"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 0
+value = 7
+
+[sub_resource type="Resource" id="Resource_ckqwt"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 0
+value = 8
+
+[sub_resource type="Resource" id="Resource_ylor4"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 0
+value = 9
+
+[sub_resource type="Resource" id="Resource_i6vcq"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 1
+value = 0
+
+[sub_resource type="Resource" id="Resource_jh1dj"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 1
+value = 1
+
+[sub_resource type="Resource" id="Resource_jcf1i"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 1
+value = 2
+
+[sub_resource type="Resource" id="Resource_p50rf"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 1
+value = 3
+
+[sub_resource type="Resource" id="Resource_bucg4"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 1
+value = 4
+
+[sub_resource type="Resource" id="Resource_r6go8"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 1
+value = 5
+
+[sub_resource type="Resource" id="Resource_xxhl5"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 0
+value = 5
+
+[sub_resource type="Resource" id="Resource_qxwpm"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 0
+value = 7
+
+[sub_resource type="Resource" id="Resource_k4kti"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 1
+value = 8
+
+[sub_resource type="Resource" id="Resource_l7hj3"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 1
+value = 9
+
+[sub_resource type="Resource" id="Resource_3myo1"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 2
+value = 0
+
+[sub_resource type="Resource" id="Resource_ilhyj"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 2
+value = 1
+
+[sub_resource type="Resource" id="Resource_2be42"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 2
+value = 2
+
+[sub_resource type="Resource" id="Resource_cqqul"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 2
+value = 3
+
+[sub_resource type="Resource" id="Resource_fqqbt"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 2
+value = 4
+
+[sub_resource type="Resource" id="Resource_53goh"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 2
+value = 5
+
+[sub_resource type="Resource" id="Resource_t0lly"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 2
+value = 6
+
+[sub_resource type="Resource" id="Resource_25526"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 2
+value = 7
+
+[sub_resource type="Resource" id="Resource_feyid"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 2
+value = 8
+
+[sub_resource type="Resource" id="Resource_ebbxi"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 2
+value = 9
+
+[sub_resource type="Resource" id="Resource_n7amd"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 3
+value = 0
+
+[sub_resource type="Resource" id="Resource_olu4n"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 3
+value = 1
+
+[sub_resource type="Resource" id="Resource_ngn1u"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 3
+value = 2
+
+[sub_resource type="Resource" id="Resource_heq6l"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 3
+value = 3
+
+[sub_resource type="Resource" id="Resource_5kfwb"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 3
+value = 4
+
+[sub_resource type="Resource" id="Resource_6n4xi"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 3
+value = 5
+
+[sub_resource type="Resource" id="Resource_q0ldc"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 3
+value = 6
+
+[sub_resource type="Resource" id="Resource_nsy57"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 3
+value = 7
+
+[sub_resource type="Resource" id="Resource_psabt"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 3
+value = 8
+
+[sub_resource type="Resource" id="Resource_l3k0m"]
+script = ExtResource("1_0iip6")
+id = ""
+suit = 3
+value = 9
 
 [resource]
 script = ExtResource("1_gmq6c")
-cards = Array[Resource("res://custom_resources/card.gd")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+cards = Array[ExtResource("1_0iip6")]([SubResource("Resource_nga0j"), SubResource("Resource_7gxrs"), SubResource("Resource_00ckf"), SubResource("Resource_mutuv"), SubResource("Resource_0j0ho"), SubResource("Resource_5prcl"), SubResource("Resource_ivnxx"), SubResource("Resource_416re"), SubResource("Resource_ckqwt"), SubResource("Resource_ylor4"), SubResource("Resource_i6vcq"), SubResource("Resource_jh1dj"), SubResource("Resource_jcf1i"), SubResource("Resource_p50rf"), SubResource("Resource_bucg4"), SubResource("Resource_r6go8"), SubResource("Resource_xxhl5"), SubResource("Resource_qxwpm"), SubResource("Resource_k4kti"), SubResource("Resource_l7hj3"), SubResource("Resource_3myo1"), SubResource("Resource_ilhyj"), SubResource("Resource_2be42"), SubResource("Resource_cqqul"), SubResource("Resource_fqqbt"), SubResource("Resource_53goh"), SubResource("Resource_t0lly"), SubResource("Resource_25526"), SubResource("Resource_feyid"), SubResource("Resource_ebbxi"), SubResource("Resource_n7amd"), SubResource("Resource_olu4n"), SubResource("Resource_ngn1u"), SubResource("Resource_heq6l"), SubResource("Resource_5kfwb"), SubResource("Resource_6n4xi"), SubResource("Resource_q0ldc"), SubResource("Resource_nsy57"), SubResource("Resource_psabt"), SubResource("Resource_l3k0m")])
