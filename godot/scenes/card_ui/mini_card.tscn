@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://bye447x4ccnw8"]
+
+[ext_resource type="Script" path="res://scenes/card_ui/mini_card.gd" id="1_reydd"]
+[ext_resource type="Texture2D" uid="uid://cvn7kv7r1w747" path="res://sprites/tinycards/c2.png" id="2_q4p0n"]
+[ext_resource type="Texture2D" uid="uid://xewjdagefi4u" path="res://sprites/tinycards/card_select.png" id="2_veh0e"]
+[ext_resource type="Script" path="res://scenes/card_ui/mini_card_selection.gd" id="4_stjt1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aq57b"]
+size = Vector2(32.3333, 41.6667)
+
+[node name="MiniCard" type="Control"]
+custom_minimum_size = Vector2(78, 92)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -3.0
+offset_right = -1005.0
+offset_bottom = -628.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_reydd")
+
+[node name="selected" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = -0.666667
+offset_top = 1.33333
+offset_right = 38.3333
+offset_bottom = 47.3333
+scale = Vector2(2, 2)
+texture = ExtResource("2_veh0e")
+
+[node name="card" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.085
+anchor_top = 0.043
+anchor_right = 0.906
+anchor_bottom = 0.957
+offset_left = 0.0366664
+offset_top = 0.0439999
+offset_right = -32.0013
+offset_bottom = -42.044
+scale = Vector2(2, 2)
+texture = ExtResource("2_q4p0n")
+stretch_mode = 2
+script = ExtResource("4_stjt1")
+
+[node name="Area2D" type="Area2D" parent="card"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="card/Area2D"]
+position = Vector2(15.8333, 20.8333)
+shape = SubResource("RectangleShape2D_aq57b")

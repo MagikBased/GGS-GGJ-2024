@@ -13,8 +13,11 @@ func draw_card() -> Card:
 	card_pile_size_changed.emit(cards.size())
 	return card
 
-func add_card(card: Card) -> void:
-	cards.append(card)
+func add_card(card: Card, put_top: bool = false) -> void:
+	if put_top:
+		cards.push_front(card)
+	else:
+		cards.append(card)
 	card_pile_size_changed.emit(cards.size())
 
 func shuffle() -> void:

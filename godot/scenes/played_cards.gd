@@ -6,7 +6,7 @@ func _ready():
 
 func sort_children():
 	var next_position = Vector2(0, 0)
-	var max_cards_per_row = 8
+	var max_cards_per_row = 4
 	var row_height = 50 
 	for i in range(get_child_count()):
 		var child = get_child(i)

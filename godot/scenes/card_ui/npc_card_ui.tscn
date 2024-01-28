@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://q3maqplirx3a"]
+[gd_scene load_steps=8 format=3 uid="uid://q3maqplirx3a"]
 
 [ext_resource type="Script" path="res://scenes/card_ui/npc_card_ui.gd" id="1_qscb5"]
 [ext_resource type="Theme" uid="uid://pqx6ev30fd8o" path="res://main_theme.tres" id="2_r3u47"]
+[ext_resource type="Texture2D" uid="uid://clvfoxcew50dq" path="res://sprites/sword.png" id="3_ssi4e"]
+[ext_resource type="Texture2D" uid="uid://32qmum7koe81" path="res://sprites/heart.png" id="4_tdkr4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rsrlg"]
 bg_color = Color(0.839216, 0.854902, 0.823529, 1)
@@ -23,7 +25,9 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="CardUI" type="Control"]
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_8ch52"]
+
+[node name="CardUI" type="Control" groups=["enemy_card"]]
 custom_minimum_size = Vector2(112, 175)
 layout_mode = 3
 anchors_preset = 15
@@ -143,6 +147,56 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_7l8iu")
+
+[node name="SwordTexture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 179.0
+offset_right = 43.0
+offset_bottom = 219.0
+texture = ExtResource("3_ssi4e")
+stretch_mode = 2
+
+[node name="HeartTexture" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 180.0
+offset_right = 94.0
+offset_bottom = 220.0
+texture = ExtResource("4_tdkr4")
+stretch_mode = 2
+
+[node name="AttackLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 27.0
+offset_top = 9.0
+offset_right = 67.0
+offset_bottom = 35.0
+grow_vertical = 0
+theme = ExtResource("2_r3u47")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxTexture_8ch52")
+text = "10"
+
+[node name="HealthLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = 9.0
+offset_bottom = 35.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("2_r3u47")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "20"
+horizontal_alignment = 2
 
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

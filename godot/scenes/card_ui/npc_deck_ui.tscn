@@ -14,7 +14,7 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="Deck" type="Control"]
+[node name="Deck" type="Control" groups=["enemy_deck"]]
 custom_minimum_size = Vector2(112, 175)
 layout_mode = 3
 anchors_preset = 15

@@ -1,7 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://b5f7m6w1n5wso"]
+[gd_scene load_steps=22 format=3 uid="uid://b5f7m6w1n5wso"]
 
 [ext_resource type="Script" path="res://scripts/UI/hand.gd" id="1_0psti"]
-[ext_resource type="PackedScene" uid="uid://b4k2rthi0k3mn" path="res://scenes/card_ui/card_ui.tscn" id="1_f5r5g"]
 [ext_resource type="Script" path="res://scenes/battle.gd" id="1_hjqel"]
 [ext_resource type="Script" path="res://scripts/UI/battle_area.gd" id="1_yqvpm"]
 [ext_resource type="Script" path="res://scripts/player_handler.gd" id="2_sfg6c"]
@@ -16,7 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://cq8htcnlkbqk1" path="res://scenes/card_ui/npc_deck_ui.tscn" id="7_wefr3"]
 [ext_resource type="PackedScene" uid="uid://5b10y40f18d0" path="res://scenes/card_ui/joker_card_ui.tscn" id="10_0im3a"]
 [ext_resource type="Script" path="res://scripts/attack_button.gd" id="10_2bs80"]
+[ext_resource type="Script" path="res://scenes/Jokers_container.gd" id="10_olvra"]
 [ext_resource type="Script" path="res://scenes/played_cards.gd" id="11_xxfgi"]
+[ext_resource type="Texture2D" uid="uid://bh4gqtlr38cep" path="res://sprites/shield.png" id="15_7tcp5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yxhmn"]
 size = Vector2(1080, 480)
@@ -26,7 +27,6 @@ size = Vector2(1080, 240)
 
 [sub_resource type="Resource" id="Resource_f7o1a"]
 script = ExtResource("3_yl5tr")
-id = ""
 suit = 1
 value = 10
 
@@ -90,7 +90,7 @@ grow_vertical = 2
 alignment = 1
 script = ExtResource("6_nf6m5")
 
-[node name="Enemy" type="HBoxContainer" parent="CardUI"]
+[node name="Enemy" type="HBoxContainer" parent="CardUI" groups=["enemy_area"]]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -109,12 +109,13 @@ card = SubResource("Resource_f7o1a")
 face_up = true
 in_play = true
 
-[node name="Jokers" type="HBoxContainer" parent="CardUI"]
+[node name="Jokers" type="HBoxContainer" parent="CardUI" groups=["joker_area"]]
 offset_left = 10.0
 offset_top = 10.0
 offset_right = 238.0
 offset_bottom = 185.0
 alignment = 1
+script = ExtResource("10_olvra")
 
 [node name="CardUI" parent="CardUI/Jokers" instance=ExtResource("10_0im3a")]
 layout_mode = 2
@@ -124,32 +125,109 @@ suit = 1
 layout_mode = 2
 face_up = true
 
-[node name="PlayedCards" type="Container" parent="CardUI"]
+[node name="PlayedCards" type="Container" parent="CardUI" groups=["played_cards_area"]]
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -354.0
+offset_left = -236.0
 offset_top = 10.0
 offset_right = -10.0
-offset_bottom = 543.0
+offset_bottom = 366.0
 grow_horizontal = 0
 script = ExtResource("11_xxfgi")
 
-[node name="CardUI" parent="CardUI/PlayedCards" instance=ExtResource("1_f5r5g")]
-layout_mode = 2
-script = null
+[node name="SelectDiscardCards" type="Control" parent="CardUI"]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1080.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="CardUI2" parent="CardUI/PlayedCards" instance=ExtResource("1_f5r5g")]
-layout_mode = 2
-script = null
+[node name="HBoxContainer" type="HBoxContainer" parent="CardUI/SelectDiscardCards"]
+visible = false
+layout_mode = 1
+offset_left = 250.0
+offset_top = 360.0
+offset_right = 790.0
+offset_bottom = 600.0
+alignment = 1
 
-[node name="CardUI3" parent="CardUI/PlayedCards" instance=ExtResource("1_f5r5g")]
-layout_mode = 2
-script = null
+[node name="_DiscardButton" type="TextureButton" parent="CardUI/SelectDiscardCards"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -626.0
+offset_top = -470.0
+offset_right = -450.0
+offset_bottom = -395.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_l4ass")
 
-[node name="CardUI4" parent="CardUI/PlayedCards" instance=ExtResource("1_f5r5g")]
-layout_mode = 2
-script = null
+[node name="Label" type="Label" parent="CardUI/SelectDiscardCards/_DiscardButton"]
+visible = false
+layout_mode = 0
+offset_left = 454.0
+offset_top = 250.0
+offset_right = 598.0
+offset_bottom = 296.0
+theme = ExtResource("7_vwwsj")
+text = "Discard"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShieldIcon" type="TextureRect" parent="CardUI"]
+offset_left = 720.0
+offset_top = 187.0
+offset_right = 760.0
+offset_bottom = 227.0
+texture = ExtResource("15_7tcp5")
+
+[node name="Label" type="Label" parent="CardUI/ShieldIcon"]
+layout_mode = 0
+offset_left = 37.0
+offset_top = 10.0
+offset_right = 77.0
+offset_bottom = 36.0
+theme = ExtResource("7_vwwsj")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DiscardButton" type="TextureButton" parent="."]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 830.0
+offset_top = 450.0
+offset_right = 1006.0
+offset_bottom = 525.0
+grow_horizontal = 2
+grow_vertical = 2
+texture_normal = ExtResource("6_l4ass")
+
+[node name="Label" type="Label" parent="DiscardButton"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 16.0
+offset_right = 162.0
+offset_bottom = 58.0
+theme = ExtResource("7_vwwsj")
+text = "Discard
+"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="AttackButton" type="TextureButton" parent="."]
 anchors_preset = 6
@@ -200,4 +278,6 @@ mouse_filter = 2
 texture = ExtResource("4_e4pqp")
 stretch_mode = 1
 
+[connection signal="pressed" from="CardUI/SelectDiscardCards/_DiscardButton" to="CardUI/SelectDiscardCards" method="_on_discard_button_pressed"]
+[connection signal="pressed" from="DiscardButton" to="PlayerHandler" method="_on_discard_button_pressed"]
 [connection signal="pressed" from="AttackButton" to="AttackButton" method="_on_pressed"]

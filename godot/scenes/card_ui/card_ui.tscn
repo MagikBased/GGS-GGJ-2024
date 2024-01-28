@@ -133,7 +133,7 @@ stretch_mode = 5
 [node name="DropPointDetector" type="Area2D" parent="."]
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DropPointDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DropPointDetector" groups=["collision"]]
 position = Vector2(56, 87.5)
 shape = SubResource("RectangleShape2D_voux0")
 
@@ -152,7 +152,7 @@ state = 1
 script = ExtResource("6_42klh")
 state = 2
 
-[node name="CardReleasedState" type="Node" parent="CardStateMachine"]
+[node name="CardReleasedState" type="Node" parent="CardStateMachine" groups=["hand_card"]]
 script = ExtResource("7_5e5pg")
 state = 3
 
