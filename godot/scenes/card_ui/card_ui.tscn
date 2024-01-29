@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://b4k2rthi0k3mn"]
+[gd_scene load_steps=11 format=3 uid="uid://b4k2rthi0k3mn"]
 
 [ext_resource type="Theme" uid="uid://pqx6ev30fd8o" path="res://main_theme.tres" id="1_0qm0v"]
 [ext_resource type="Script" path="res://scripts/card_ui/card_ui.gd" id="1_mqsvp"]
+[ext_resource type="Script" path="res://scenes/card_ui/art.gd" id="3_blxg7"]
 [ext_resource type="Script" path="res://scenes/card_ui/card_state_machine.gd" id="3_ndfc4"]
 [ext_resource type="Script" path="res://scripts/card_ui/card_states/card_base_state.gd" id="4_cnj5n"]
 [ext_resource type="Script" path="res://scripts/card_ui/card_states/card_clicked_state.gd" id="5_1m021"]
@@ -129,6 +130,7 @@ grow_horizontal = 2
 grow_vertical = 2
 expand_mode = 1
 stretch_mode = 5
+script = ExtResource("3_blxg7")
 
 [node name="DropPointDetector" type="Area2D" parent="."]
 collision_mask = 2

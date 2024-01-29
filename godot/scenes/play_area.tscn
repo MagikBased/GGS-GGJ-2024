@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b5f7m6w1n5wso"]
+[gd_scene load_steps=24 format=3 uid="uid://b5f7m6w1n5wso"]
 
 [ext_resource type="Script" path="res://scripts/UI/hand.gd" id="1_0psti"]
 [ext_resource type="Script" path="res://scenes/battle.gd" id="1_hjqel"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" path="res://scripts/attack_button.gd" id="10_2bs80"]
 [ext_resource type="Script" path="res://scenes/Jokers_container.gd" id="10_olvra"]
 [ext_resource type="Script" path="res://scenes/played_cards.gd" id="11_xxfgi"]
+[ext_resource type="Texture2D" uid="uid://dslvw8du5v4ny" path="res://sprites/card_arts/JokerCard.png" id="12_51w4q"]
 [ext_resource type="Texture2D" uid="uid://bh4gqtlr38cep" path="res://sprites/shield.png" id="15_7tcp5"]
 [ext_resource type="Script" path="res://scenes/on_loss.gd" id="19_fb0bp"]
 
@@ -121,6 +122,7 @@ script = ExtResource("10_olvra")
 [node name="CardUI" parent="CardUI/Jokers" instance=ExtResource("10_0im3a")]
 layout_mode = 2
 suit = 1
+texture = ExtResource("12_51w4q")
 
 [node name="CardUI2" parent="CardUI/Jokers" instance=ExtResource("10_0im3a")]
 layout_mode = 2
@@ -186,9 +188,9 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ShieldIcon" type="TextureRect" parent="CardUI"]
-offset_left = 720.0
+offset_left = 760.0
 offset_top = 187.0
-offset_right = 760.0
+offset_right = 800.0
 offset_bottom = 227.0
 texture = ExtResource("15_7tcp5")
 

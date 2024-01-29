@@ -12,9 +12,13 @@ signal reparent_requested(which_card_ui: CardUI, which_parent)
 @onready var suit_2 = $Suit2
 @onready var playarea: Array[Node] = []
 @onready var played: bool = false
+@onready var art = $Art
+
 
 func _ready() -> void:
 	card_state_machine.init(self)
+	await get_tree().create_timer(0.01).timeout
+	art.texture = card.card_texture
 	
 
 func _input(event: InputEvent) -> void:

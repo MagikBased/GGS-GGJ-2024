@@ -4,6 +4,7 @@ enum Suit_Color{RED,BLACK}
 
 @export var face_up: bool = false
 @export var suit: Suit_Color
+@export var texture: Texture
 @onready var card_back = $CardBack
 @onready var buttons_h_box_container = $ButtonsHBoxContainer
 @onready var face_value = $FaceValue

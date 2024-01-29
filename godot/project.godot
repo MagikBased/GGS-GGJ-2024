@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="MyGame"
+config/name="Regicide Funny and Fun"
 run/main_scene="res://scenes/play_area.tscn"
 config/features=PackedStringArray("4.2")
-config/icon="res://icon.svg"
+config/icon="res://sprites/icon.png"
 
 [autoload]
 
@@ -23,6 +23,7 @@ UserSettings="*res://settings/user_settings.gd"
 
 window/size/viewport_width=1080
 window/size/viewport_height=720
+window/size/resizable=false
 window/size/window_width_override=1080
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"

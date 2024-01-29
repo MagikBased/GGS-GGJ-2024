@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://5b10y40f18d0"]
+[gd_scene load_steps=6 format=3 uid="uid://5b10y40f18d0"]
 
 [ext_resource type="Script" path="res://scenes/card_ui/joker_card_ui.gd" id="1_w0vkl"]
 [ext_resource type="Theme" uid="uid://pqx6ev30fd8o" path="res://main_theme.tres" id="2_bntgr"]
+[ext_resource type="Texture2D" uid="uid://dslvw8du5v4ny" path="res://sprites/card_arts/JokerCard.png" id="3_0qqy2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rsrlg"]
 bg_color = Color(0.839216, 0.854902, 0.823529, 1)
@@ -93,6 +94,7 @@ offset_right = 36.0
 offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("3_0qqy2")
 expand_mode = 1
 stretch_mode = 5
 
@@ -124,14 +126,7 @@ theme = ExtResource("2_bntgr")
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 text = "♥"
 
-[node name="ButtonDiamond" type="Button" parent="ButtonsHBoxContainer"]
-layout_mode = 2
-theme = ExtResource("2_bntgr")
-theme_override_colors/font_color = Color(1, 0, 0, 1)
-text = "♦"
-
 [connection signal="gui_input" from="." to="." method="_on_gui_input"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
 [connection signal="pressed" from="ButtonsHBoxContainer/ButtonHeart" to="." method="_on_button_heart_pressed"]
-[connection signal="pressed" from="ButtonsHBoxContainer/ButtonDiamond" to="." method="_on_button_diamond_pressed"]

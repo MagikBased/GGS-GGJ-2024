@@ -1,67 +1,82 @@
-[gd_resource type="Resource" script_class="CardPile" load_steps=15 format=3 uid="uid://ba377n8x6sxkh"]
+[gd_resource type="Resource" script_class="CardPile" load_steps=18 format=3 uid="uid://ba377n8x6sxkh"]
 
 [ext_resource type="Script" path="res://custom_resources/card_pile.gd" id="1_0gkkb"]
+[ext_resource type="Texture2D" uid="uid://bjjao6mhy3u78" path="res://sprites/card_arts/Jcard.png" id="1_dtmsr"]
 [ext_resource type="Script" path="res://custom_resources/card.gd" id="1_jqikp"]
+[ext_resource type="Texture2D" uid="uid://cm5uhqnfxopaq" path="res://sprites/card_arts/Qcard.png" id="3_edu6i"]
+[ext_resource type="Texture2D" uid="uid://cyg8lqmyr0p6x" path="res://sprites/card_arts/Kcard.png" id="4_u52me"]
 
 [sub_resource type="Resource" id="Resource_xi1v8"]
 script = ExtResource("1_jqikp")
 suit = 0
 value = 10
+card_texture = ExtResource("1_dtmsr")
 
 [sub_resource type="Resource" id="Resource_7ilqi"]
 script = ExtResource("1_jqikp")
 suit = 1
 value = 10
+card_texture = ExtResource("1_dtmsr")
 
 [sub_resource type="Resource" id="Resource_ndx8w"]
 script = ExtResource("1_jqikp")
 suit = 2
 value = 10
+card_texture = ExtResource("1_dtmsr")
 
 [sub_resource type="Resource" id="Resource_3qhye"]
 script = ExtResource("1_jqikp")
 suit = 3
 value = 10
+card_texture = ExtResource("1_dtmsr")
 
 [sub_resource type="Resource" id="Resource_61w61"]
 script = ExtResource("1_jqikp")
 suit = 0
 value = 11
+card_texture = ExtResource("3_edu6i")
 
 [sub_resource type="Resource" id="Resource_s41pn"]
 script = ExtResource("1_jqikp")
 suit = 1
 value = 11
+card_texture = ExtResource("3_edu6i")
 
 [sub_resource type="Resource" id="Resource_vmfix"]
 script = ExtResource("1_jqikp")
 suit = 2
 value = 11
+card_texture = ExtResource("3_edu6i")
 
 [sub_resource type="Resource" id="Resource_hufkr"]
 script = ExtResource("1_jqikp")
 suit = 3
 value = 11
+card_texture = ExtResource("3_edu6i")
 
 [sub_resource type="Resource" id="Resource_1c0o2"]
 script = ExtResource("1_jqikp")
 suit = 0
 value = 12
+card_texture = ExtResource("4_u52me")
 
 [sub_resource type="Resource" id="Resource_fg65k"]
 script = ExtResource("1_jqikp")
 suit = 1
 value = 12
+card_texture = ExtResource("4_u52me")
 
 [sub_resource type="Resource" id="Resource_dpufj"]
 script = ExtResource("1_jqikp")
 suit = 2
 value = 12
+card_texture = ExtResource("4_u52me")
 
 [sub_resource type="Resource" id="Resource_iybin"]
 script = ExtResource("1_jqikp")
 suit = 3
 value = 12
+card_texture = ExtResource("4_u52me")
 
 [resource]
 script = ExtResource("1_0gkkb")

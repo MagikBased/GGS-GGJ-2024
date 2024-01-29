@@ -14,6 +14,7 @@ enum Value {ACE,TWO,THREE,FOUR,FIVE,SIX,SEVEN,EIGHT,NINE,TEN,JACK,QUEEN,KING}
 @onready var attack_label = $AttackLabel
 @onready var health_label = $HealthLabel
 @onready var enemy_deck = $"../EnemyDeck"
+@onready var art = $Art
 
 
 var attack_value: int
@@ -38,6 +39,8 @@ func _ready() -> void:
 		#card.value = Value.KING
 		health = 40
 	update_stats()
+	await get_tree().create_timer(0.01).timeout
+	art.texture = card.card_texture
 	
 
 func new_card_stats(new_face_value) -> void:
